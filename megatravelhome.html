@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mega Travel</title>
+        <link href="css/megatravel.css" rel="stylesheet" />
+    
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        
+</head>
+
+<body ng-app="" style="margin:30px;" >
+    
+    <h1>Mega Travel</h1>
+    <div ng-controller="ReservationController">
+        <form class="form-horizontal, well">
+            <h3>Reservation Information</h3>
+            <div style="padding:10px;">
+                <label class="control-label col-xs-1">Number of adults:</label>
+                <input type="text" name="adults" ng-model="newreservation.adults" /><br />
+            </div>
+            <div style="padding:10px;">
+                <label class="control-label col-xs-1">Number of children:</label>
+                <input type="text" name="children" ng-model="newreservation.children" /><br />
+            </div>
+            <div style="padding:10px;">
+                <label class="control-label col-xs-1">Date of travel:</label>
+                <input type="text" name="date" ng-model="newreservation.date" /><br />
+            </div>
+        </form><br><br>
+        <form>
+                Select a Destination:
+                <select ng-model="myVar">
+                    <option value="">
+                    <option value="brisbane">Brisbane, Australia
+                    <option value="vancouver">Vancouver, Canada
+                    <option value="newyorkcity">New York City, United States
+                    <option value="berlin">Berlin, Germany
+                    <option value="cancun">Cancun, Mexico
+                </select>
+        </form>
+            
+
+            <div ng-switch="myVar">
+                <div ng-switch-when="brisbane">
+                    <h3>Available activities include:</h3>
+                    <ul>
+                    <li>City Tours</li>
+                    <li>Sports</li>
+                    <li>Cycling</li>
+                    <li>Museums</li>
+                    <li>Boating</li>
+                    </ul>
+                </div>
+                
+                <div ng-switch-when="vancouver">
+                    <h3>Available activities include:</h3>
+                    <ul>
+                        <li>Museums</li>
+                        <li>Sailing</li>
+                        <li>Beach</li>
+                        <li>Hiking</li>
+                        <li>Boating</li>
+                    </ul>
+                </div>
+                
+        </div>
+            <br><br>
+        
+        <div ng-app="myApp" ng-controller="ContactController">
+            <form novalidate>
+                <h3>Contact Information</h3>
+                <div style="padding:10px;">
+                    <label class="control-label col-xs-1">First name:</label>
+                    <input type="text" name="fname" ng-model="newcontact.fname" /><br />
+                </div>
+                <div style="padding: 10px;">
+                    <label class="control-label col-xs-1">Last name:</label>
+                    <input type="text" name="lname" ng-model="newcontact.lname" /><br />
+                </div>
+                <div style="padding: 10px;">
+                    <label class="control-label col-xs-1">Phone number:</label>
+                    <input type="text" name="phonenumber" ng-model="newcontact.number" /><br />
+                </div>
+                <div>
+                    <label class="control-label col-xs-1">E-mail:</label>
+                    <input type="email" name="email" ng-model="newcontact.email" /><br /><br />
+                </div>
+                <div class="col-xs-offset-2">
+                <input type="hidden" ng-model="newcontact.id" />
+                <button ng-click="submit()">Submit</button>
+                <button ng-click="reset()">Reset</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('ContactController', function($scope) {
+        $scope.reset = function() {
+            $scope.newcontact.fname = "";
+            $scope.newcontact.lname = "";
+            $scope.newcontact.number = "";
+            $scope.newcontact.email = "";
+    };
+    $scope.reset();
+});
+</script>
+        
+</body>
+</html>
